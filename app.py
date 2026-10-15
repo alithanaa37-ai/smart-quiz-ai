@@ -12,8 +12,8 @@ st.set_page_config(
 st.title("🧠 SmartQuiz AI - مولد الأسئلة الذكي")
 st.markdown("قم بإدخال أي نص تعليمي أو درس، وسيقوم الذكاء الاصطناعي بتوليد أسئلة امتحانات تلقائية مع الإجابات النموذجية!")
 
-# إدخال مفتاح الـ API
-api_key = st.text_input("أدخل مفتاح Google Gemini API الخاص بك (يبدأ بـ AIza):", type="password")
+# إدخال المفتاح
+api_key = st.text_input("أدخل مفتاح الـ API الخاص بك:", type="password")
 
 if api_key:
     try:
@@ -37,9 +37,8 @@ if api_key:
         else:
             with st.spinner("جاري تحليل النص وتوليد الأسئلة بواسطة الذكاء الاصطناعي..."):
                 try:
-                    # استخدام نموذج gemini-1.5-flash مع الـ API الجديد
-                    generation_config = {"temperature": 0.7}
-                    model = genai.GenerativeModel('gemini-1.5-flash', generation_config=generation_config)
+                    # استخدام نموذج gemini-1.5-flash
+                    model = genai.GenerativeModel('gemini-1.5-flash')
                     
                     prompt = f"""
                     بناءً على النص التالي، قم بتوليد {num_questions} من نوع {question_type}.
@@ -58,4 +57,4 @@ if api_key:
                 except Exception as e:
                     st.error(f"حدث خطأ أثناء الاتصال بالذكاء الاصطناعي: {e}")
 else:
-    st.info("الرجاء إدخال مفتاح الـ API الصحيح للمتابعة.")
+    st.info("الرجاء إدخال المفتاح للمتابعة.")
