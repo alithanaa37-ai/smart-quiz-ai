@@ -3,16 +3,16 @@ import streamlit as st
 import google.generativeai as genai
 
 # إعداد الصفحة وتصميم الواجهة
-st.set_page_title_co fig = {
-    "page_title": "SmartQuiz AI",
-    "page_icon": "🤖",
-    "layout": "centered"
-}
+st.set_page_config(
+    page_title="SmartQuiz AI",
+    page_icon="🤖",
+    layout="centered"
+)
 
 st.title("🧠 SmartQuiz AI - مولد الأسئلة الذكي")
 st.markdown("قم بإدخال أي نص تعليمي أو درس، وسيقوم الذكاء الاصطناعي بتوليد أسئلة امتحانات تلقائية مع الإجابات النموذجية!")
 
-# إدخال مفتاح الـ API (أو قراءته من الـ Environment Variables)
+# إدخال مفتاح الـ API
 api_key = st.text_input("أدخل مفتاح Google Gemini API الخاص بك:", type="password")
 
 if api_key:
@@ -54,3 +54,4 @@ if api_key:
                 except Exception as e:
                     st.error(f"حدث خطأ أثناء الاتصال بالذكاء الاصطناعي: {e}")
 else:
+    st.info("الرجاء إدخال مفتاح الـ API الخاص بـ Google AI Studio للمتابعة.")
