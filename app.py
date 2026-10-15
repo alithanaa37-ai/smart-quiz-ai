@@ -34,8 +34,8 @@ if api_key:
         else:
             with st.spinner("جاري تحليل النص وتوليد الأسئلة بواسطة الذكاء الاصطناعي..."):
                 try:
-                    # استخدام النموذج الافتراضي المدعوم
-                    model = genai.GenerativeModel('gemini-pro')
+                    # استخدام النموذج الحديث والمتوافق تماماً
+                    model = genai.GenerativeModel('gemini-1.5-flash')
                     
                     prompt = f"""
                     بناءً على النص التالي، قم بتوليد {num_questions} من نوع {question_type}.
